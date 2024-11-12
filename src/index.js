@@ -53,7 +53,7 @@ function ToDoList() {
   }
 
   return (
-    <div className="container bg-info text-center w-50 mx-auto mt-5 p-2 rounded-2">
+    <div className="container bg-info text-center col-lg-6 col-12 mx-auto mt-5 p-2 rounded-2">
       <h1>lista rzeczy do zrobienia</h1>
       <input
         value={newTask}

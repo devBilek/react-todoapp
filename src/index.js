@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
 
 function ToDoList() {
-  const [tasks, setTasks] = useState(["dupa1" , "dupa2"])
+  const [tasks, setTasks] = useState(["cos tam 1" , "cos tam 2"])
   const [newTask, setNewTask] = useState("")
 
   function handleInputChange(event) {
@@ -27,11 +28,9 @@ function ToDoList() {
   function moveTaskUpByIndex(index) {
     setTasks(old => {
       if (index > 0) {
-        const updatedTasks = [...old]
-  
-        let x = updatedTasks[index]
-        updatedTasks[index] = updatedTasks[index - 1]
-        updatedTasks[index - 1] = x
+        const updatedTasks = [...old];
+        
+        [updatedTasks[index], updatedTasks[index - 1]] = [updatedTasks[index - 1], updatedTasks[index]];
 
         return updatedTasks
       }

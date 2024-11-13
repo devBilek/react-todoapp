@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import useBodyClass from "../useBodyClass/useBodyClass.js"
+import useBodyClass from "../useBodyClass/useBodyClass.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
+import binIcon from "../../assets/images/icons8-bin-32.png";
+import upIcon from "../../assets/images/icons8-up-30.png";
+import downIcon from "../../assets/images/icons8-down-30.png";
 
 export default function App() {
   const [tasks, setTasks] = useState(["cos tam 1", "cos tam 2"]);
@@ -65,42 +68,51 @@ export default function App() {
   return (
     <div className={darkMode ? "dark-mode" : "light-mode"}>
       <div
-        className={`container text-center col-lg-6 col-12 mx-auto mt-5 p-2 rounded-2 ${
+        className={`container col-lg-6 col-12 mx-auto mt-5 p-2 rounded-2 ${
           darkMode ? "dark-mode" : "light-mode"
         }`}
       >
-        <h1>lista rzeczy do zrobienia</h1>
-        <button onClick={toggleDarkMode}>dark mode</button>
-        <input value={newTask} onChange={handleInputChange} />
-        <button onClick={addTask}>dodaj</button>
+        <button onClick={toggleDarkMode} className="btn btn-dark">
+          {darkMode ? "light mode" : "dark mode"}
+        </button>
+        <div className="text-center">
+          <h1 className="fw-bold">lista rzeczy do zrobienia</h1>
+          <div className="d-flex justify-content-center">
+            <input value={newTask} onChange={handleInputChange} />
+            <button onClick={addTask} className="btn btn-light">
+              dodaj
+            </button>
+          </div>
+        </div>
+
         <div>
           <ol>
             {tasks.map((task, index) => (
               <li
                 key={index}
-                className={`container mt-2 p-1 rounded-2 ${
+                className={`container mt-2 px-4 pb-2 fs-5 text-left rounded-2 ${
                   darkMode ? "dark-mode" : "light-mode"
                 }`}
               >
                 {task}
-                <div className="buttons">
+                <div className="buttons d-flex justify-content-center">
                   <button
                     onClick={() => deleteTaskByIndex(index)}
                     className="btn btn-danger"
                   >
-                    usuń
+                    <img src={binIcon} alt="bin" />
                   </button>
                   <button
                     onClick={() => moveTaskUpByIndex(index)}
-                    className="btn btn-success m-1"
+                    className="btn btn-success mx-1"
                   >
-                    do góry
+                    <img src={upIcon} alt="up" />
                   </button>
                   <button
                     onClick={() => moveTaskDownByIndex(index)}
                     className="btn btn-warning"
                   >
-                    do dołu
+                    <img src={downIcon} alt="down" />
                   </button>
                 </div>
               </li>

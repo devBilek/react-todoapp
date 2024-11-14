@@ -1,18 +1,16 @@
 body.dark-mode {
   background-color: darkgray;
-  color: white;
 }
 body.light-mode {
   background-color: white;
-  color: black;
 }
 div.container.dark-mode {
   background-color: dimgrey;
-  border: 2px solid white;
+  color: white;
 }
 div.container.light-mode {
-  background-color: wheat;
-  border: 2px solid black;
+  background-color: cornflowerblue;
+  color: black;
 }
 input {
   border: none;

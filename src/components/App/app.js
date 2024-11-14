@@ -6,6 +6,7 @@ import {
   getInitialDarkMode,
   getInitialTasks,
 } from "../../utils/localStorageUtils.js";
+import ToggleSwitchButton from "../ToggleSwitch/toggleSwitch.js";
 import TaskList from "../taskList/taskList.js";
 
 export default function App() {
@@ -76,17 +77,21 @@ export default function App() {
   }
 
   return (
-    <div className={darkMode ? "dark-mode" : "light-mode"}>
+    <>
+      <header className="container-fluid bg-dark p-3 d-flex justify-content-between">
+        <h1 className="text-light mb-0 fw-bold">ToDoApp by devBilek</h1>
+        <ToggleSwitchButton
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
+      </header>
       <div
-        className={`container col-lg-6 col-12 mx-auto mt-5 p-2 rounded-2 ${
+        className={`container col-lg-6 col-12 mx-auto mt-5 mb-2 p-2 rounded-5 ${
           darkMode ? "dark-mode" : "light-mode"
         }`}
       >
-        <button onClick={toggleDarkMode} className="btn btn-dark">
-          {darkMode ? "light mode" : "dark mode"}
-        </button>
         <div className="text-center">
-          <h1 className="fw-bold">lista rzeczy do zrobienia</h1>
+          <h2 className="fw-bold m-2">lista rzeczy do zrobienia</h2>
           <div className="d-flex justify-content-center">
             <input value={newTask} onChange={handleInputChange} />
             <button
@@ -108,6 +113,6 @@ export default function App() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }

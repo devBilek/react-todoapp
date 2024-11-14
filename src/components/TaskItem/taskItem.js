@@ -14,7 +14,7 @@ const TaskItem = ({
 }) => (
   <li
     key={index}
-    className={`container mt-2 px-4 pb-2 fs-5 text-left rounded-2 ${
+    className={`container mt-2 px-4 pb-2 fs-5 rounded-4 ${
       darkMode ? "dark-mode" : "light-mode"
     }`}
   >

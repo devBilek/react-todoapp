@@ -1,32 +1,26 @@
 body.dark-mode {
-    background-color: darkgray;
-    color: white;
+  background-color: darkgray;
+  color: white;
 }
 body.light-mode {
-    background-color: white;
-    color: black;
-}
-.container.dark-mode {
-    background-color: darkgray;
-}
-.container.light-mode {
-    background-color: white;
+  background-color: white;
+  color: black;
 }
 div.container.dark-mode {
-    background-color: dimgrey;
-    border: 2px solid white;
+  background-color: dimgrey;
+  border: 2px solid white;
 }
 div.container.light-mode {
-    background-color: wheat;
-    border: 2px solid black;
-}
-
-ol {
-    padding: 0;
-}
-li {
-    list-style-type: none;
+  background-color: wheat;
+  border: 2px solid black;
 }
 input {
-    border: none;
+  border: none;
+  border-radius: 4px 0 0 4px;
+}
+input:focus {
+  outline: none;
+}
+#addTaskButton {
+  border-radius: 0 4px 4px 0;
 }

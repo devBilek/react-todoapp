@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useBodyClass from "../useBodyClass/useBodyClass.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
-import binIcon from "../../assets/images/icons8-bin-32.png";
-import upIcon from "../../assets/images/icons8-up-30.png";
-import downIcon from "../../assets/images/icons8-down-30.png";
+import {
+  getInitialDarkMode,
+  getInitialTasks,
+} from "../../utils/localStorageUtils.js";
+import TaskList from "../taskList/taskList.js";
 
 export default function App() {
-  const [tasks, setTasks] = useState(["cos tam 1", "cos tam 2"]);
+  const [tasks, setTasks] = useState(getInitialTasks);
   const [newTask, setNewTask] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(getInitialDarkMode);
 
   useBodyClass(darkMode ? "dark-mode" : "light-mode");
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   function toggleDarkMode() {
     setDarkMode((old) => !old);
@@ -79,45 +89,23 @@ export default function App() {
           <h1 className="fw-bold">lista rzeczy do zrobienia</h1>
           <div className="d-flex justify-content-center">
             <input value={newTask} onChange={handleInputChange} />
-            <button onClick={addTask} className="btn btn-light">
+            <button
+              onClick={addTask}
+              className="btn btn-light"
+              id="addTaskButton"
+            >
               dodaj
             </button>
           </div>
         </div>
-
         <div>
-          <ol>
-            {tasks.map((task, index) => (
-              <li
-                key={index}
-                className={`container mt-2 px-4 pb-2 fs-5 text-left rounded-2 ${
-                  darkMode ? "dark-mode" : "light-mode"
-                }`}
-              >
-                {task}
-                <div className="buttons d-flex justify-content-center">
-                  <button
-                    onClick={() => deleteTaskByIndex(index)}
-                    className="btn btn-danger"
-                  >
-                    <img src={binIcon} alt="bin" />
-                  </button>
-                  <button
-                    onClick={() => moveTaskUpByIndex(index)}
-                    className="btn btn-success mx-1"
-                  >
-                    <img src={upIcon} alt="up" />
-                  </button>
-                  <button
-                    onClick={() => moveTaskDownByIndex(index)}
-                    className="btn btn-warning"
-                  >
-                    <img src={downIcon} alt="down" />
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <TaskList
+            tasks={tasks}
+            darkMode={darkMode}
+            deleteTaskByIndex={deleteTaskByIndex}
+            moveTaskUpByIndex={moveTaskUpByIndex}
+            moveTaskDownByIndex={moveTaskDownByIndex}
+          />
         </div>
       </div>
     </div>

@@ -1,0 +1,12 @@
+ol {
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+.container.dark-mode {
+  background-color: darkgray;
+}
+.container.light-mode {
+  background-color: white;
+}

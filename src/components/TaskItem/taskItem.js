@@ -2,6 +2,7 @@ import React from "react";
 import binIcon from "../../assets/images/icons8-bin-32.png";
 import upIcon from "../../assets/images/icons8-up-30.png";
 import downIcon from "../../assets/images/icons8-down-30.png";
+import editIcon from "../../assets/images/icons8-pencil-30.png";
 import "./taskItem.css";
 
 const TaskItem = ({
@@ -11,6 +12,8 @@ const TaskItem = ({
   deleteTaskByIndex,
   moveTaskUpByIndex,
   moveTaskDownByIndex,
+  editTaskByIndex,
+  editIndex,
 }) => (
   <li
     key={index}
@@ -22,21 +25,30 @@ const TaskItem = ({
     <div className="buttons d-flex justify-content-center">
       <button
         onClick={() => deleteTaskByIndex(index)}
-        className="btn btn-danger"
+        className="btn btn-danger mx-1"
+        disabled={editIndex !== null}
       >
         <img src={binIcon} alt="bin" />
       </button>
       <button
         onClick={() => moveTaskUpByIndex(index)}
-        className="btn btn-success mx-1"
+        className="btn btn-success "
+        disabled={editIndex !== null}
       >
         <img src={upIcon} alt="up" />
       </button>
       <button
         onClick={() => moveTaskDownByIndex(index)}
-        className="btn btn-warning"
+        className="btn btn-warning "
+        disabled={editIndex !== null}
       >
         <img src={downIcon} alt="down" />
+      </button>
+      <button
+        onClick={() => editTaskByIndex(index)}
+        className="btn btn-primary mx-1"
+      >
+        <img src={editIcon} alt="edit" />
       </button>
     </div>
   </li>

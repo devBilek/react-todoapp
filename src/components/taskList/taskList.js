@@ -7,6 +7,8 @@ const TaskList = ({
   deleteTaskByIndex,
   moveTaskUpByIndex,
   moveTaskDownByIndex,
+  editTaskByIndex,
+  editIndex,
 }) => (
   <ol>
     {tasks.map((task, index) => (
@@ -18,6 +20,8 @@ const TaskList = ({
         deleteTaskByIndex={deleteTaskByIndex}
         moveTaskUpByIndex={moveTaskUpByIndex}
         moveTaskDownByIndex={moveTaskDownByIndex}
+        editTaskByIndex={editTaskByIndex}
+        editIndex={editIndex}
       />
     ))}
   </ol>

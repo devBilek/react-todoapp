@@ -13,6 +13,7 @@ export default function App() {
   const [tasks, setTasks] = useState(getInitialTasks);
   const [newTask, setNewTask] = useState("");
   const [darkMode, setDarkMode] = useState(getInitialDarkMode);
+  const [editIndex, setEditIndex] = useState(null);
 
   useBodyClass(darkMode ? "dark-mode" : "light-mode");
 
@@ -32,7 +33,7 @@ export default function App() {
     setNewTask(event.target.value);
   }
 
-  function addTask() {
+  function handleAddTask() {
     if (newTask.trim() !== "") {
       setTasks((old) => [...old, newTask]);
       setNewTask("");
@@ -67,13 +68,37 @@ export default function App() {
       if (old.length - 1 > index) {
         const updatedTasks = [...old];
 
-        let x = updatedTasks[index];
-        updatedTasks[index] = updatedTasks[index + 1];
-        updatedTasks[index + 1] = x;
+        [updatedTasks[index], updatedTasks[index + 1]] = [
+          updatedTasks[index + 1],
+          updatedTasks[index],
+        ];
+
         return updatedTasks;
       }
       return old;
     });
+  }
+
+  function editTaskByIndex(index) {
+    setEditIndex(index);
+    setNewTask(tasks[index]);
+  }
+
+  function handleAcceptEditButton() {
+    if (newTask.trim() !== "") {
+      setTasks((old) => {
+        const updatedTasks = [...old];
+        updatedTasks[editIndex] = newTask;
+        return updatedTasks;
+      });
+      setEditIndex(null);
+      setNewTask("");
+    }
+  }
+
+  function handleCancelEditButton() {
+    setEditIndex(null);
+    setNewTask("");
   }
 
   return (
@@ -94,13 +119,33 @@ export default function App() {
           <h2 className="fw-bold m-2">lista rzeczy do zrobienia</h2>
           <div className="d-flex justify-content-center">
             <input value={newTask} onChange={handleInputChange} />
-            <button
-              onClick={addTask}
-              className="btn btn-light"
-              id="addTaskButton"
-            >
-              dodaj
-            </button>
+            {editIndex === null ? (
+              <button
+                onClick={handleAddTask}
+                className="btn btn-light"
+                id="addTaskButton"
+              >
+                dodaj
+              </button>
+            ) : null}
+            {editIndex !== null ? (
+              <>
+                <button
+                  onClick={handleAcceptEditButton}
+                  className="btn btn-light"
+                  id="acceptEditTaskButton"
+                >
+                  akceptuj
+                </button>
+                <button
+                  onClick={handleCancelEditButton}
+                  className="btn btn-light"
+                  id="cancelEditTaskButton"
+                >
+                  anuluj
+                </button>
+              </>
+            ) : null}
           </div>
         </div>
         <div>
@@ -110,6 +155,8 @@ export default function App() {
             deleteTaskByIndex={deleteTaskByIndex}
             moveTaskUpByIndex={moveTaskUpByIndex}
             moveTaskDownByIndex={moveTaskDownByIndex}
+            editTaskByIndex={editTaskByIndex}
+            editIndex={editIndex}
           />
         </div>
       </div>

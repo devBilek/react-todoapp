@@ -1,0 +1,14 @@
+body.dark-mode {
+  background-color: darkgray;
+}
+body.light-mode {
+  background-color: white;
+}
+#appContainer.container.dark-mode {
+  background-color: dimgrey;
+  color: white;
+}
+#appContainer.container.light-mode {
+  background-color: cornflowerblue;
+  color: black;
+}

@@ -20,6 +20,7 @@ const TaskItem = ({
     className={`container mt-2 px-4 pb-2 fs-5 rounded-4 ${
       darkMode ? "dark-mode" : "light-mode"
     }`}
+    id="taskItem"
   >
     {task}
     <div className="buttons d-flex justify-content-center">

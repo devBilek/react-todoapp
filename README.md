@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# ToDoApp by devBilek
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ToDoApp is a task management application that allows users to add, edit, delete, and reorder tasks. The application also supports dark mode.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Add new tasks
+- Edit existing tasks
+- Delete tasks
+- Move tasks up and down the list
+- Dark mode / light mode
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React
+- Bootstrap
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Structure
 
-### `npm test`
+├───assets
+│ └───images
+├───components
+│ ├───TaskInput
+│ ├───TaskItem
+│ ├───TaskList
+│ └───ToggleSwitch
+└───hooks
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/devBilek/react-todoapp
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd ToDoApp
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Run the application:
+   ```sh
+   npm start
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Add a Task**: Enter the task content in the input field and click the "Add" button.
+2. **Edit a Task**: Click the edit icon (pencil) next to a task, make changes, and click the "Accept" button.
+3. **Delete a Task**: Click the trash bin icon next to the task you want to delete.
+4. **Move a Task**: Use the arrow buttons (up/down) next to a task to move it up or down the list.
+5. **Toggle Mode**: Click the dark mode/light mode switch in the header to toggle between modes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Component Structure
 
-### `npm run eject`
+### App
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The main component of the application, which manages the state and renders the other components.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### TaskInput
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The component responsible for entering new tasks and editing existing tasks.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### TaskItem
 
-## Learn More
+The component representing a single task in the list.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### TaskList
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The component responsible for rendering the list of tasks.
 
-### Code Splitting
+### ToggleSwitch
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The component responsible for toggling between dark mode and light mode.
 
-### Analyzing the Bundle Size
+## Custom Hooks
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### useLocalStorage
 
-### Making a Progressive Web App
+A hook that allows storing state in `localStorage`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### useBodyClass
 
-### Advanced Configuration
+A hook that allows dynamically adding and removing CSS classes from the `<body>` element.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Author
 
-### Deployment
+devBilek
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

@@ -1,5 +1,6 @@
 import React from "react";
-import TaskItem from "../TaskItem/taskItem";
+import TaskItem from "../TaskItem/taskItem.js";
+import "./taskList.css";
 
 const TaskList = ({
   tasks,
@@ -10,7 +11,7 @@ const TaskList = ({
   editTaskByIndex,
   editIndex,
 }) => (
-  <ol>
+  <ol id="taskList">
     {tasks.map((task, index) => (
       <TaskItem
         key={index}

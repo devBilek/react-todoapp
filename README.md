@@ -17,6 +17,7 @@ ToDoApp is a task management application that allows users to add, edit, delete,
 
 ## Project Structure
 
+```sh
 ├───assets
 │ └───images
 ├───components
@@ -25,6 +26,7 @@ ToDoApp is a task management application that allows users to add, edit, delete,
 │ ├───TaskList
 │ └───ToggleSwitch
 └───hooks
+```
 
 ## Installation
 

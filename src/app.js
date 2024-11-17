@@ -9,8 +9,8 @@ import TaskList from "./components/TaskList/taskList.js";
 
 export default function App() {
   const [tasks, setTasks] = useLocalStorage("tasks", [
-    "cos tam 1",
-    "cos tam 2",
+    "number 1",
+    "number 2",
   ]);
   const [newTask, setNewTask] = useState("");
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
@@ -118,7 +118,7 @@ export default function App() {
         }`}
         id="appContainer"
       >
-        <h2 className="fw-bold m-2 text-center">lista rzeczy do zrobienia</h2>
+        <h2 className="fw-bold m-2 text-center">to-do list</h2>
         <TaskInput
           newTask={newTask}
           handleInputChange={handleInputChange}

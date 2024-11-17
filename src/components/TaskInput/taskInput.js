@@ -17,7 +17,7 @@ const TaskInput = ({
         className="btn btn-light"
         id="addTaskButton"
       >
-        dodaj
+        add
       </button>
     ) : null}
     {editIndex !== null ? (
@@ -27,14 +27,14 @@ const TaskInput = ({
           className="btn btn-light"
           id="acceptEditTaskButton"
         >
-          akceptuj
+          accept
         </button>
         <button
           onClick={handleCancelEditButton}
           className="btn btn-light"
           id="cancelEditTaskButton"
         >
-          anuluj
+          cancel
         </button>
       </>
     ) : null}

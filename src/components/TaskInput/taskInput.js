@@ -8,14 +8,18 @@ const TaskInput = ({
   handleAcceptEditButton,
   handleCancelEditButton,
   editIndex,
+  handleInputOnKeyDown,
+  btnRef,
+  inputRef
 }) => (
   <div className="d-flex justify-content-center" id="taskInput">
-    <input value={newTask} onChange={handleInputChange} />
+    <input value={newTask} onChange={handleInputChange} onKeyDown={handleInputOnKeyDown} ref={inputRef}/>
     {editIndex === null ? (
       <button
         onClick={handleAddTask}
         className="btn btn-light"
         id="addTaskButton"
+        ref={btnRef}
       >
         Add
       </button>
@@ -26,6 +30,7 @@ const TaskInput = ({
           onClick={handleAcceptEditButton}
           className="btn btn-light"
           id="acceptEditTaskButton"
+          ref={btnRef}
         >
           Accept
         </button>

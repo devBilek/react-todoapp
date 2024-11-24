@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import useBodyClass from "./hooks/useBodyClass.js";
 import useLocalStorage from "./hooks/useLocalStorage.js";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,15 +8,18 @@ import TaskInput from "./components/TaskInput/taskInput.js";
 import TaskList from "./components/TaskList/taskList.js";
 
 export default function App() {
-  const [tasks, setTasks] = useLocalStorage("tasks", [
-    "number 1",
-    "number 2",
-  ]);
+  const [tasks, setTasks] = useLocalStorage("tasks", ["number 1", "number 2"]);
   const [newTask, setNewTask] = useState("");
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
   const [editIndex, setEditIndex] = useState(null);
+  const btnRef = useRef(null);
+  const inputRef = useRef(null);
 
   useBodyClass(darkMode ? "dark-mode" : "light-mode");
+
+  const handleInputOnKeyDown = useCallback((event) => {
+    if (event.key === "Enter") btnRef.current.click();
+  }, []);
 
   const toggleDarkMode = useCallback(() => {
     setDarkMode((old) => !old);
@@ -85,6 +88,7 @@ export default function App() {
     (index) => {
       setEditIndex(index);
       setNewTask(tasks[index]);
+      inputRef.current.focus();
     },
     [tasks]
   );
@@ -126,6 +130,9 @@ export default function App() {
           handleAcceptEditButton={handleAcceptEditButton}
           handleCancelEditButton={handleCancelEditButton}
           editIndex={editIndex}
+          handleInputOnKeyDown={handleInputOnKeyDown}
+          btnRef={btnRef}
+          inputRef={inputRef}
         />
         <TaskList
           tasks={tasks}

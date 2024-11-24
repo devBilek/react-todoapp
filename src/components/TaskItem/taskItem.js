@@ -14,6 +14,7 @@ const TaskItem = ({
   moveTaskDownByIndex,
   editTaskByIndex,
   editIndex,
+  btnRef
 }) => (
   <li
     key={index}

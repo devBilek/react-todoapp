@@ -1,9 +1,16 @@
 #taskItem {
   list-style-type: none;
+  min-height: 100px;
 }
 #taskItem.container.dark-mode {
   background-color: darkgray;
 }
 #taskItem.container.light-mode {
   background-color: white;
+}
+#buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }

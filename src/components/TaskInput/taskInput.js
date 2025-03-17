@@ -13,6 +13,7 @@ const TaskInput = ({
   inputRef
 }) => (
   <div className="d-flex justify-content-center" id="taskInput">
+    <div className="shadow-sm">
     <input value={newTask} onChange={handleInputChange} onKeyDown={handleInputOnKeyDown} ref={inputRef}/>
     {editIndex === null ? (
       <button
@@ -43,6 +44,7 @@ const TaskInput = ({
         </button>
       </>
     ) : null}
+  </div>
   </div>
 );
 

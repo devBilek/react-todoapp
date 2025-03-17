@@ -2,13 +2,13 @@ body.dark-mode {
   background-color: darkgray;
 }
 body.light-mode {
-  background-color: white;
+  background-color: aliceblue;
 }
 #appContainer.container.dark-mode {
-  background-color: dimgrey;
+  background-color: rgb(107, 107, 107);
   color: white;
 }
 #appContainer.container.light-mode {
-  background-color: cornflowerblue;
+  background-color: #91C4F2;
   color: black;
 }

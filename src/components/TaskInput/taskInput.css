@@ -14,3 +14,7 @@
 #taskInput #cancelEditTaskButton {
   border-radius: 0 4px 4px 0;
 }
+#taskInput div {
+  display: flex;
+  height: 100%;
+}

@@ -10,7 +10,7 @@ import TaskList from "./components/TaskList/taskList.js";
 export default function App() {
   const [tasks, setTasks] = useLocalStorage("tasks", ["number 1", "number 2"]);
   const [newTask, setNewTask] = useState("");
-  const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
+  const [darkMode, setDarkMode] = useLocalStorage("darkMode", true);
   const [editIndex, setEditIndex] = useState(null);
   const btnRef = useRef(null);
   const inputRef = useRef(null);
@@ -117,7 +117,7 @@ export default function App() {
         <ToggleSwitch darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       </header>
       <div
-        className={`container col-lg-6 col-12 mx-auto mt-5 mb-2 p-2 rounded-5 ${
+        className={`container col-lg-6 col-12 mx-auto mt-5 mb-2 p-2 rounded-5 shadow-lg ${
           darkMode ? "dark-mode" : "light-mode"
         }`}
         id="appContainer"
